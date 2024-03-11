@@ -1,0 +1,55 @@
+body {
+    height: 100vh;
+}
+
+.quiz-card {
+    margin-top: 3rem;
+    position: relative;
+}
+
+.question {
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    background-color: #eee;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.option-section {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.2rem;
+}
+
+.option {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+}
+
+.next-button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: var(--fColor);
+    background-color: #FFF;
+    font-weight: 600;
+    font-size: 1.2rem;
+    width: 5rem;
+    border: 1px solid var(--fColor);
+    border-radius: .5rem;
+    padding: .75rem 0;
+    text-align: center;
+    cursor: pointer;
+    transition: all .4s;
+}
+
+.next-button:hover {
+    transform: translateY(-6px);
+    color: #FFF;
+    background-color: var(--fColor);
+}
