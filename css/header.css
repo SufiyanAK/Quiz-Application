@@ -1,0 +1,78 @@
+.header {
+    width: 100%;
+    height: 5rem;
+    box-shadow: 0px -8px 13px 1px black;
+}
+
+.container {
+    height: 100%;
+}
+
+.nav {
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    width: 6.2rem;
+    cursor: pointer;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    column-gap: .4rem;
+    cursor: pointer;
+}
+
+.user-img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: black;
+    display: flex;
+}
+
+.user-name {
+    color: var(--fColor);
+    font-weight: 600;
+}
+
+/* For Basic need Initial */
+
+/* 2xl = 1536px = 96rem huge desktop screen */
+/* @media (max-width: 96em) {} */
+
+/* xl = 1280px = 80rem normal Desktop screen */
+@media (max-width: 80em) {
+    .logo img {
+        width: 5.4rem;
+    }
+}
+
+/* lg = 1024px = 64rem Tabs and Ipad Portrait mode */
+@media (max-width: 64em) {
+    .logo img {
+        width: 5rem;
+    }
+}
+
+/* md = 768px = 48rem Low resolution Tab and Ipad */
+@media (max-width: 48em) {
+    .logo img {
+        width: 4rem;
+    }
+}
+
+/* sm = 640px = 40rem a little lower resolution */
+/* @media (max-width: 40em) {} */
+
+/* xs = 475px = 29.6875rem Mobile Screen */
+@media (max-width: 29.6875rem) {
+    .logo img {
+        width: 3.4rem;
+    }
+}

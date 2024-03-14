@@ -1,4 +1,4 @@
-.Hero-Section {
+.subjects-container {
     height: 100%;
     margin-top: 3rem;
     margin-bottom: 3rem;
@@ -35,34 +35,24 @@
     background-color: #6c757d50;
 }
 
-.quiz-card {
-    margin-top: 3rem;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
-    gap: 1.6rem;
-}
-
-.card {
-    width: 100%;
-    height: 14rem;
+.subject-item {
     display: flex;
-    flex-direction: column;
-    gap: 1.4rem;
-    padding: 1rem;
-    justify-content: center;
-    border: 1px solid var(--fColor);
-    border-radius: .6rem;
-    transition: all .4s;
+    align-items: center;
+    height: 4rem;
+    width: 100%;
+    background-color: #f4f4f4;
+    border: 1px solid #e8e8e8;
 }
 
-.card:hover {
-    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 4px;
+.subject-item:hover {
+    background-color: #dddddd;
 }
 
-.card-title  {
-    font-size: 1.4rem;
+.quiz-info {
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .btn {
@@ -83,6 +73,9 @@
     color: #FFF;
     background-color: var(--fColor);
 }
+
+/*  #f4f4f4
+    #dddddd */
 
 /* For Basic need Initial */
 
