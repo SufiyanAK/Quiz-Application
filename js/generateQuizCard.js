@@ -43,6 +43,8 @@ const subjects = [
 
 // Constants
 const cardDisplay = document.querySelector('.quiz-card');
+const profileName = document.querySelector('.user-name');
+const profileTitle = document.querySelector('.title span');
 
 // Event Listener for DOM Content Loaded
 document.addEventListener('DOMContentLoaded', () => {

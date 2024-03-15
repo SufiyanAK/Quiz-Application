@@ -133,8 +133,8 @@ export const htmlQuestions = [
     },
     {
         "Question":"Which is the correct HTML statement to define the red color of the paragraph text?",
-        "option1":"<p style=\"color: #ff0000;\">",
-        "option2":"<p style=\"color: red;\">",
+        "option1":"<p style='color: #ff0000;'>",
+        "option2":"<p style='color: red;'>",
         "answer":"Both A and B.",
         "option3":"None of the above"
     },

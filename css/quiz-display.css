@@ -4,7 +4,8 @@ body {
 
 .quiz-card {
     margin-top: 3rem;
-    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .question {
@@ -32,9 +33,7 @@ body {
 }
 
 .next-button {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    align-self: flex-end;
     color: var(--fColor);
     background-color: #FFF;
     font-weight: 600;

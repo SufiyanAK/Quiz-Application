@@ -105,6 +105,12 @@
     .title {
         font-size: 2rem;
     }
+
+    .btn:hover {
+        transform: translateY(0);
+        color: var(--fColor);
+        background-color: #FFF;
+    }
 }
 
 /* md = 768px = 48rem Low resolution Tab and Ipad */
