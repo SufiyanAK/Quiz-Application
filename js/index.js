@@ -10,6 +10,7 @@ const emptyEmail = document.querySelector('.error-email');
 const emptyPassword = document.querySelector('.error-set-password');
 const incorrectConfirmPassword = document.querySelector('.error');
 const pointer = document.querySelectorAll('.pointer');
+const showPassword = document.querySelectorAll('.ShowNHide');
 
 
 console.log(UserData);
@@ -49,11 +50,40 @@ enter.forEach(e => {
     });
 });
 
-// document.body.addEventListener('keydown', (event) => {
-//     if (event.key === 'Enter') {
-//         console.log('Enter pressed');
-//     }
-// });
+password.addEventListener('input', () => {
+    if (password.value.trim() === '') {
+        showPassword[1].style.display = 'none';
+    } else {
+        showPassword[1].style.display = 'block';
+    }
+});
+
+confirmPassword.addEventListener('input', () => {
+    if (confirmPassword.value.trim() === '') {
+        showPassword[0].style.display = 'none';
+    } else {
+        showPassword[0].style.display = 'block';
+    }
+});
+
+// SHOW PASSWORD EVENT
+showPassword.forEach(elem => {
+    elem.addEventListener('click', () => {
+        displayPassword(elem, elem.dataset.target);
+    });
+});
+
+function displayPassword(elem, targetId) {
+    const type = document.getElementById(targetId);
+
+    if (elem.src.includes('show.svg')) {
+        type.type = 'text';
+        elem.src = 'Assets/icons/hide.svg';
+    } else {
+        type.type = 'password';
+        elem.src = 'Assets/icons/show.svg';
+    }
+}
 
 // SIGNIN FUNCTION
 function signIn (userName, password) {

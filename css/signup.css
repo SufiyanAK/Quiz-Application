@@ -223,6 +223,14 @@ body {
     color: var(--white);
 }
 
+.ShowNHide {
+    position: absolute;
+    right: .8rem;
+    top: 50%;
+    transform: translate(0, -50%);
+    display: none;
+}
+
 .text h2 {
     font-size: 3.5rem;
     font-weight: 800;

@@ -1,3 +1,5 @@
+import { userProfile, aboutUser, logout, result } from "./home.js";
+
 const quizTitles = document.querySelectorAll('.subject-item');
 const profileName = document.querySelector('.user-name');
 let userName = JSON.parse(localStorage.getItem('userName')) || '';
@@ -33,5 +35,18 @@ quizTitles.forEach(title => {
         if (name === 'HTML') {
             window.location.href = '../html/quiz.html'
         }
-    })
-})
+    });
+});
+
+userProfile.addEventListener('click', () => {
+    console.log('is clicked')
+    show();
+});
+
+logout.addEventListener('click', () => {
+    window.location.href = '../index.html';
+});
+
+result.addEventListener('click', () => {
+    alert('section is under devolopment');
+});

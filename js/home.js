@@ -40,15 +40,20 @@ const subjects = [
     {
         subName: 'Web & Mobile App (ASF)',
         count: 3,
-    }
+    },
+    {
+        subName: 'C and C#',
+        count: 3,
+    },
+
 ];
 
 // Constants
-const userProfile = document.querySelector('.user-profile');
-const aboutUser = document.querySelector('.about-user');
 const cardDisplay = document.querySelector('.quiz-card');
 const profileName = document.querySelector('.user-name');
 const profileTitle = document.querySelector('.title span');
+const userProfile = document.querySelector('.user-profile');
+const aboutUser = document.querySelector('.about-user');
 const logout = document.querySelector('.logout');
 const result = document.querySelector('.result');
 
@@ -115,6 +120,7 @@ userProfile.addEventListener('click', () => {
 });
 
 logout.addEventListener('click', () => {
+    localStorage.removeItem('userName');
     window.location.href = '../index.html';
 });
 
@@ -126,3 +132,5 @@ function show () {
 	aboutUser.classList.toggle('show')
     aboutUser.classList.toggle('hide')
 }
+
+export { userProfile, aboutUser, logout, result }
