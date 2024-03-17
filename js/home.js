@@ -1,3 +1,5 @@
+import { UserData } from "./quiz-data/userProfile.js";
+
 const subjects = [
     {
         subName: 'Python',
@@ -42,9 +44,25 @@ const subjects = [
 ];
 
 // Constants
+const userProfile = document.querySelector('.user-profile');
+const aboutUser = document.querySelector('.about-user');
 const cardDisplay = document.querySelector('.quiz-card');
 const profileName = document.querySelector('.user-name');
 const profileTitle = document.querySelector('.title span');
+const logout = document.querySelector('.logout');
+const result = document.querySelector('.result');
+
+let userName = JSON.parse(localStorage.getItem('userName')) || '';
+userName = userName ? userName.replace(/^"|"$/g, '') : '';
+
+UserData.forEach(profile => {
+    if (profile.name === userName) {
+        userName = userName.split(' ')
+        profileName.textContent = userName[0];
+        profileTitle.textContent = userName.length === 3 ? `${userName[0]} ${userName[1]} ${userName[2]}` : `${userName[0]} ${userName[1]}`;
+    }
+});
+
 
 // Event Listener for DOM Content Loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -84,9 +102,27 @@ function setupJoinButtonListeners() {
 // Handle Join Button Click
 function handleJoinButtonClick(title, count, index) {
     if (title === 'Web And Mobile Hybrid App Development') {
-        window.location.href = 'html/subject.html';
+        window.location.href = '../html/aboutSub.html';
     } else {
         console.log(`Joining ${title} with ${count} subjects on index ${index}.`);
         // Perform any action you want when a button is clicked
     }
+}
+
+userProfile.addEventListener('click', () => {
+    console.log('is clicked')
+    show();
+});
+
+logout.addEventListener('click', () => {
+    window.location.href = '../index.html';
+});
+
+result.addEventListener('click', () => {
+    alert('section is under devolopment');
+});
+
+function show () {
+	aboutUser.classList.toggle('show')
+    aboutUser.classList.toggle('hide')
 }

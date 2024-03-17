@@ -1,4 +1,10 @@
 const quizTitles = document.querySelectorAll('.subject-item');
+const profileName = document.querySelector('.user-name');
+let userName = JSON.parse(localStorage.getItem('userName')) || '';
+userName = userName ? userName.replace(/^"|"$/g, '') : '';
+userName = userName.split(' ');
+profileName.textContent = userName[0];
+
 
 // quizTitles.forEach(title => {
 //     title.addEventListener('click', () => {
@@ -25,7 +31,7 @@ quizTitles.forEach(title => {
         const name = title.querySelector('.subject-name').textContent;
         
         if (name === 'HTML') {
-            window.location.href = 'quiz.html'
+            window.location.href = '../html/quiz.html'
         }
     })
 })

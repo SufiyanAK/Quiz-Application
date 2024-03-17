@@ -1,4 +1,4 @@
-const UserData = JSON.parse(localStorage.getItem('data')) || [];
+import { UserData } from "./quiz-data/userProfile.js";
 
 let container = document.getElementById('container');
 const signUpBtn = document.getElementById('signUp');
@@ -9,6 +9,10 @@ const emptyUsername = document.querySelector('.error-set-userName');
 const emptyEmail = document.querySelector('.error-email');
 const emptyPassword = document.querySelector('.error-set-password');
 const incorrectConfirmPassword = document.querySelector('.error');
+const pointer = document.querySelectorAll('.pointer');
+
+
+console.log(UserData);
 
 const fields = {
     userName: document.getElementById('userName'),
@@ -16,27 +20,59 @@ const fields = {
     setUserName: document.getElementById('setUserName'),
     email: document.getElementById('email'),
     setPassword: document.getElementById('setPassword'),
-    confirmPassword: document.getElementById('confirmPassword')
+    confirmPassword: document.getElementById('confirmPassword'),
+    enter: document.querySelectorAll('.onEnter')
 };
 
-const { setUserName, email, setPassword, confirmPassword, userName, password } = fields;
+export const { setUserName, email, setPassword, confirmPassword, userName, password, enter } = fields;
 
+
+// EVENTLISTNERS FOR SIGNIN, SIGNUP AND TOGGLE FOR BOTH SIGNIN AND SIGNUP
+signUpBtn.addEventListener('click', () => {
+    signUp(setUserName.value, email.value, setPassword.value, confirmPassword.value);
+})
+
+signInBtn.addEventListener('click', () => {
+    signIn(userName.value, password.value);
+});
+
+pointer.forEach(point => {
+    point.addEventListener('click', view)
+})
+
+// ON ENTER EVENT
+enter.forEach(e => {
+    e.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            signIn(userName.value, password.value);
+        }
+    });
+});
+
+// document.body.addEventListener('keydown', (event) => {
+//     if (event.key === 'Enter') {
+//         console.log('Enter pressed');
+//     }
+// });
+
+// SIGNIN FUNCTION
 function signIn (userName, password) {
     incorrectUserName.textContent = '';
     incorrectPassword.textContent = '';
 
+    // SHOW ERROR WHEN FIELD IS EMPTY
     if (!userName || !password) {
         incorrectUserName.textContent = !userName ? 'Please Fill UserName' : '';
         incorrectPassword.textContent = !password ? 'Please Input Password' : '';
-        // incorrectUserName.style.display = !userName.value ? 'block' : 'none';
-        // incorrectPassword.style.display = !password.value ? 'block' : 'none';
         return;
     }
 
     for (const profile of UserData) {
         if (userName === profile.name && password === profile.password) {
+            // localStorage.setItem('userName', userName);
+            saveToStorage('userName', JSON.stringify(userName));
             // Successful sign-in
-            window.location.href = '../index.html';
+            window.location.href = '../html/home.html';
             return;
         }
     }
@@ -44,29 +80,20 @@ function signIn (userName, password) {
     // Display error for incorrect username or password
     incorrectUserName.textContent = 'Incorrect username';
     incorrectPassword.textContent = 'Incorrect password';
-    // incorrectUserName.style.display = 'block';
-    // incorrectPassword.style.display = 'block';
-    
-
 }
 
-function signUp (name, email, password, confirmPassword,) {
-
+// SIGNUP FUNCTION
+function signUp (name, email, password, confirmPassword) {
     incorrectConfirmPassword.textContent = '';
     emptyUsername.textContent = '';
     emptyEmail.textContent = '';
     emptyPassword.textContent = '';
-
 
     if (!name || !email || !password || !confirmPassword) {
         emptyUsername.textContent = !name ? 'Please Set UserName' : '';
         emptyEmail.textContent = !email ? 'Please Set Email' : '';
         emptyPassword.textContent = !password ? 'Please Set Password' : '';
         incorrectConfirmPassword.textContent = !confirmPassword ? 'Please Password To Confirm' : '';
-        // emptyUsername.style.display = !name ? 'block' : 'none';
-        // emptyEmail.style.display = !email ? 'block' : 'none';
-        // emptyPassword.style.display = !password ? 'block' : 'none';
-        // incorrectConfirmPassword.style.display = !confirmPassword ? 'block' : 'none';
         return;
     }
 
@@ -76,22 +103,27 @@ function signUp (name, email, password, confirmPassword,) {
         return;
     }
 
-    UserData.push(
-        {
+    UserData.push({
             name,
             email,
             password,
             confirmPassword
-        }
-    );
+        });
 
-    localStorage.setItem('data', JSON.stringify(UserData));
+    saveToStorage('userData', UserData);
+
+    // localStorage.setItem('UserData', JSON.stringify(UserData));
+
+    view();
 
     console.log(UserData);
 }
 
+function saveToStorage (elemName, value) {
+    localStorage.setItem(elemName, JSON.stringify(value))
+}
 
-toggle = () => {
+function view ()  {
 	container.classList.toggle('sign-in')
 	container.classList.toggle('sign-up')
 }

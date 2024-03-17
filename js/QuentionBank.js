@@ -6,6 +6,13 @@ const questionDisplay = document.querySelector('.question');
 const optionsContainer = document.querySelector('.option-section');
 const nextButton = document.querySelector('.next-button');
 
+const profileName = document.querySelector('.user-name');
+let userName = JSON.parse(localStorage.getItem('userName')) || '';
+userName = userName ? userName.replace(/^"|"$/g, '') : '';
+userName = userName.split(' ');
+profileName.textContent = userName[0];
+
+
 // Select 20 random questions
 let selectedQuestions = shuffle(htmlQuestions).slice(0, 20);
 
@@ -50,7 +57,7 @@ function handleNextButtonClick() {
 }
 
 function redirectToHomePage() {
-    window.location.href = '../index.html';
+    window.location.href = '../html/home.html';
 }
 
 function resetQuiz() {
@@ -64,6 +71,7 @@ function resetQuiz() {
     displayQuestion(currentQuestionIndex);
 }
 
+// QUESTION DISPLAY
 function displayQuestion(index) {
     let optionCount = 1;
     const currentQuestion = selectedQuestions[index];
@@ -97,22 +105,25 @@ function displayQuestion(index) {
     });
 }
 
+// CORRECT ANSWER CHECK
 function checkAnswer(selectedOption) {
     if (selectedOption === selectedQuestions[currentQuestionIndex].answer) {
         correctAnswers++;
     }
 }
 
+// ERROR WHEN OPTION IS NOT SELECTED
 function showErrorMessage(message) {
     swal("Good job!", message, "error");
 }
 
+// SCORE DISPLAY
 function showScore() {
-    
     const score = (correctAnswers / totalQuestions) * 100;
     swal("Score!", `Score: ${score.toFixed(2)}%`, "success");
 }
 
+// QUESTION SHUFFLING
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
