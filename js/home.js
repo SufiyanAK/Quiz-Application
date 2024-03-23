@@ -1,5 +1,3 @@
-import { UserData } from "./quiz-data/userProfile.js";
-
 const subjects = [
     {
         subName: 'Python',
@@ -45,8 +43,9 @@ const subjects = [
         subName: 'C and C#',
         count: 3,
     },
-
+    
 ];
+import { UserData } from "./quiz-data/userProfile.js";
 
 // Constants
 const cardDisplay = document.querySelector('.quiz-card');
