@@ -114,7 +114,7 @@ function checkAnswer(selectedOption) {
 
 // ERROR WHEN OPTION IS NOT SELECTED
 function showErrorMessage(message) {
-    swal("Good job!", message, "error");
+    swal("", message, "error");
 }
 
 // SCORE DISPLAY

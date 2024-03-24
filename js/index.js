@@ -12,9 +12,6 @@ const incorrectConfirmPassword = document.querySelector('.error');
 const pointer = document.querySelectorAll('.pointer');
 const showPassword = document.querySelectorAll('.ShowNHide');
 
-
-console.log(UserData);
-
 const fields = {
     userName: document.getElementById('userName'),
     password: document.getElementById('password'),
@@ -25,7 +22,7 @@ const fields = {
     enter: document.querySelectorAll('.onEnter')
 };
 
-export const { setUserName, email, setPassword, confirmPassword, userName, password, enter } = fields;
+const { setUserName, email, setPassword, confirmPassword, userName, password, enter } = fields;
 
 
 // EVENTLISTNERS FOR SIGNIN, SIGNUP AND TOGGLE FOR BOTH SIGNIN AND SIGNUP

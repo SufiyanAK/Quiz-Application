@@ -50,9 +50,9 @@ import { UserData } from "./quiz-data/userProfile.js";
 // Constants
 const cardDisplay = document.querySelector('.quiz-card');
 const profileName = document.querySelector('.user-name');
-const profileTitle = document.querySelector('.title span');
-const userProfile = document.querySelector('.user-profile');
+const profileTitle = document.getElementById('name');
 const aboutUser = document.querySelector('.about-user');
+const userProfile = document.querySelector('.user-profile');
 const logout = document.querySelector('.logout');
 const result = document.querySelector('.result');
 
@@ -63,7 +63,7 @@ UserData.forEach(profile => {
     if (profile.name === userName) {
         userName = userName.split(' ')
         profileName.textContent = userName[0];
-        profileTitle.textContent = userName.length === 3 ? `${userName[0]} ${userName[1]} ${userName[2]}` : `${userName[0]} ${userName[1]}`;
+        profileTitle.textContent = userName.length === 3 ? `${userName[0]} ${userName[1]} ${userName[2]}` : userName.length === 2 ? `${userName[0]} ${userName[1]}` : `${userName[0]}`;
     }
 });
 
@@ -108,6 +108,7 @@ function handleJoinButtonClick(title, count, index) {
     if (title === 'Web And Mobile Hybrid App Development') {
         window.location.href = '../html/aboutSub.html';
     } else {
+        alert(`This ${title} page is under development process`)
         console.log(`Joining ${title} with ${count} subjects on index ${index}.`);
         // Perform any action you want when a button is clicked
     }
@@ -132,4 +133,4 @@ function show () {
     aboutUser.classList.toggle('hide')
 }
 
-export { userProfile, aboutUser, logout, result }
+// export { userProfile, logout, result }
